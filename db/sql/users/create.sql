@@ -1,6 +1,6 @@
 CREATE TABLE users (
-  id bigserial,
-  username varchar(50),
+  id bigserial PRIMARY KEY,
+  username varchar(50) NOT NULL UNIQUE,
   password text,
-  email text,
+  email text NOT NULL UNIQUE,
 );
