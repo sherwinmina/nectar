@@ -11,6 +11,7 @@ module.exports = {
       "no-multiple-empty-lines": "off",
       "no-trailing-spaces": "off",
       "no-unused-vars": "warn",
-      "padded-blocks": "off"
+      "padded-blocks": "off",
+      "eol-last": "off"
     }
 };
