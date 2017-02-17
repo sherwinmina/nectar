@@ -1,4 +1,10 @@
-const pgp = require('pg-promise')();
+const bluebird = require('bluebird');
+
+const options = {
+  promiseLib: bluebird
+};
+
+const pgp = require('pg-promise')(options);
 
 const dbConfiguration = {
   host: 'localhost',
@@ -7,3 +13,5 @@ const dbConfiguration = {
 };
 
 const db = pgp(dbConfiguration);
+
+module.exports = db;

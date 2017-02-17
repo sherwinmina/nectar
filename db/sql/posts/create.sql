@@ -1,5 +1,5 @@
 CREATE TABLE posts (
-  id uuid gen_random_uuid() UNIQUE NOT NULL,
+  id uuid UNIQUE NOT NULL DEFAULT gen_random_uuid(),
   owner bigserial NOT NULL REFERENCES users,
   title text NOT NULL,
   content text NOT NULL

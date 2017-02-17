@@ -10,6 +10,7 @@ module.exports = {
       "semi": ["error", "always"],
       "no-multiple-empty-lines": "off",
       "no-trailing-spaces": "off",
-      "no-unused-vars": "warn"
+      "no-unused-vars": "warn",
+      "padded-blocks": "off"
     }
 };
