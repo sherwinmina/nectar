@@ -15,9 +15,9 @@ module.exports = {
     add: sql('users/add.sql'),
     get: sql('users/get.sql')
   },
-  post: {
+  posts: {
     create: sql('posts/create.sql'),
     add: sql('posts/add.sql'),
-    get: sql('posts/get.sql')
+    getAll: sql('posts/getAll.sql')
   }
 };

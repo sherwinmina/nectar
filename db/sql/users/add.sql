@@ -7,4 +7,4 @@ INSERT INTO users (
     crypt(${password}, gen_salt('bf', 8)),
     ${email}
   )
-  RETURNING username;
+  RETURNING username AS username;

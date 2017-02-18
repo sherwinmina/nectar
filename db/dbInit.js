@@ -3,13 +3,12 @@ const sql = require('./sql/sql.js');
 
 
 db.tx((t) => {
-  return t.query(sql.extensions.create)
-  .then(() => {
-    return t.query(sql.users.create);
-  })
-  .then(() => {
-    return t.query(sql.posts.create);
-  });
+
+  return t.batch([
+    t.query(sql.extensions.create),
+    t.query(sql.users.create),
+    t.query(sql.posts.create)
+  ]);
 })
 .then(() => {
   console.log('Success...the database was created.');
