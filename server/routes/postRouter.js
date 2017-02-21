@@ -3,6 +3,6 @@ const postHandler = require('../handlers/postHandler.js');
 
 router.route('/')
 .post(postHandler.addPost)
-.get(postHandler.getPost);
+.get(postHandler.getAllPosts);
 
 module.exports = router;
