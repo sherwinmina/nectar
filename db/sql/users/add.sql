@@ -1,7 +1,8 @@
 INSERT INTO users (
   username,
   password,
-  email)
+  email
+)
   VALUES (
     ${username},
     crypt(${password}, gen_salt('bf', 8)),
