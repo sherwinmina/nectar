@@ -21,7 +21,9 @@ module.exports = {
     getAll: sql('posts/getAll.sql')
   },
   products: {
-    create: sql('products/create.sql')
+    create: sql('products/create.sql'),
+    getAll: sql('products/getAll.sql'),
+    add: sql('products/add.sql')
   },
   categories: {
     create: sql('categories/create.sql')

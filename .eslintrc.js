@@ -12,6 +12,7 @@ module.exports = {
       "no-trailing-spaces": "off",
       "no-unused-vars": "warn",
       "padded-blocks": "off",
-      "eol-last": "off"
+      "eol-last": "off",
+      "key-spacing": ["error", {"beforeColon": false}]
     }
 };
