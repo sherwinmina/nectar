@@ -1,9 +1,7 @@
 const db = require('./dbConnection.js');
 const sql = require('./sql/sql.js');
 
-
 db.tx((t) => {
-
   return t.batch([
     t.query(sql.extensions.create),
     t.query(sql.users.create),
