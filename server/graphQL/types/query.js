@@ -18,19 +18,21 @@ const QueryType = new GraphQLObjectType({
         .then(user => user)
         .catch(err => err);
       }
+    },
+
+    products: {
+      type: ProductsType,
+      args: {
+        id: {type: GraphQLString}
+      },
+      resolve: (object, args, request) => {
+        return db.any(sql.products.getAll, args)
+        .then(products => products)
+        .catch(error => error);
+      }
     }
-
-
-    // products: {
-    //   type: ProductsType,
-    //   args: {
-    //     id: {type: GraphQLString}
-    //   },
-    //   resolve: (object, args, request) => {
-    //     return db.any(sql.products.get);
-    //   }
-    // }
   }
+
 });
 
 module.exports = QueryType;
