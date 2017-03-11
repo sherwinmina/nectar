@@ -1,4 +1,4 @@
-SELECT products.*, user.username
+SELECT products.*, users.username
 FROM products
-INNER JOIN user
-ON products.ownerId = user.id;
+INNER JOIN users
+ON products.ownerId = users.id;

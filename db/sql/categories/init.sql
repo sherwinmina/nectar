@@ -4,6 +4,7 @@ INSERT INTO categories (
 )
   VALUES
     ('Beer', NULL),
+    ('Cider', NULL),
     ('Wine', NULL),
     ('Spirits', NULL)
   ;

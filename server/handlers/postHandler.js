@@ -25,7 +25,7 @@ module.exports = {
   },
 
   getAllPosts: (req, res) => {
-    db.query(sql.post.getAll)
+    db.query(sql.posts.getAll)
     .then((posts) => {
       console.log('You got all the posts.');
       res.status(200).json(posts);
