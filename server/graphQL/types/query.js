@@ -1,6 +1,7 @@
-const {GraphQLString, GraphQLObjectType} = require('graphql');
+const {GraphQLString, GraphQLObjectType, GraphQLList} = require('graphql');
 const UserType = require('./user.js');
 const ProductsType = require('./products.js');
+const PostsType = require('./posts.js');
 const db = require('../../../db/dbConnection.js');
 const sql = require('../../../db/sql/sql.js');
 
@@ -21,16 +22,23 @@ const QueryType = new GraphQLObjectType({
     },
 
     products: {
-      type: ProductsType,
-      args: {
-        id: {type: GraphQLString}
-      },
+      type: new GraphQLList(ProductsType),
       resolve: (object, args, request) => {
-        return db.any(sql.products.getAll, args)
+        return db.any(sql.products.getAll)
         .then(products => products)
         .catch(error => error);
       }
+    },
+
+    posts: {
+      type: new GraphQLList(PostsType),
+      resolve: (object, args, request) => {
+        return db.any(sql.posts.getAll)
+        .then(posts => posts)
+        .catch(error => error);
+      }
     }
+
   }
 
 });
