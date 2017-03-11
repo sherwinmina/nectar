@@ -1,4 +1,8 @@
-INSERT INTO posts (owner, title, content)
+INSERT INTO posts (
+  ownerId,
+  title,
+  content
+)
   VALUES (
     (SELECT id FROM users WHERE username = ${owner}),
     ${title},
