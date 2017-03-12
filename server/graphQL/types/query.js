@@ -2,6 +2,7 @@ const {GraphQLString, GraphQLObjectType, GraphQLList} = require('graphql');
 const UserType = require('./user.js');
 const ProductsType = require('./products.js');
 const PostsType = require('./posts.js');
+const CategoriesType = require('./categories.js');
 const db = require('../../../db/dbConnection.js');
 const sql = require('../../../db/sql/sql.js');
 
@@ -25,7 +26,10 @@ const QueryType = new GraphQLObjectType({
       type: new GraphQLList(ProductsType),
       resolve: (object, args, request) => {
         return db.any(sql.products.getAll)
-        .then(products => products)
+        .then(products => products.map((product) => {
+          product.owner = product.username;
+          return product;
+        }))
         .catch(error => error);
       }
     },
@@ -34,7 +38,22 @@ const QueryType = new GraphQLObjectType({
       type: new GraphQLList(PostsType),
       resolve: (object, args, request) => {
         return db.any(sql.posts.getAll)
-        .then(posts => posts)
+        .then(posts => posts.map((post) => {
+          post.owner = post.username;
+          return post;
+        }))
+        .catch(error => error);
+      }
+    },
+
+    categories: {
+      type: new GraphQLList(CategoriesType),
+      resolve: (object, args, request) => {
+        return db.any(sql.categories.getAll)
+        .then(categories => categories.map((category) => {
+          category.parentCategory = category.parenttitle;
+          return category;
+        }))
         .catch(error => error);
       }
     }

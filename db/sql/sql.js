@@ -30,6 +30,7 @@ module.exports = {
   },
   categories: {
     create: sql('categories/create.sql'),
-    init: sql('categories/init.sql')
+    init: sql('categories/init.sql'),
+    getAll: sql('categories/getAll.sql')
   }
 };

@@ -1,0 +1,13 @@
+const {GraphQLObjectType, GraphQLString} = require('graphql');
+
+const CategoriesType = new GraphQLObjectType({
+  name: 'Categories',
+  fields: {
+    id: {type: GraphQLString},
+    title: {type: GraphQLString},
+    parentCategory: {type: GraphQLString}
+  }
+});
+
+
+module.exports = CategoriesType;
