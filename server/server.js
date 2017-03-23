@@ -4,9 +4,7 @@ const router = require('./router.js');
 const middleware = require('./middleware.js');
 
 
-
 app.use('/', middleware, router);
-
 
 app.listen(3000, () => {
   console.log('nectar listening on port 3000');

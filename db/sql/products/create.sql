@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS products CASCADE;
+
 CREATE TABLE products (
   id uuid UNIQUE NOT NULL DEFAULT gen_random_uuid(),
   ownerId bigint NOT NULL REFERENCES users,

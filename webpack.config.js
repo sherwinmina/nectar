@@ -1,16 +1,27 @@
-const path = require(path);
+const path = require('path');
+const webpack = require('webpack');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
-  entry: './client',
+  entry: [
+    'webpack-hot-middleware/client',
+    path.join(__dirname, 'client')
+
+  ],
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: 'client.bundle.js'
   },
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.html$/,
+        use: 'html-loader'
+      },
+      {
+        test: /\.(js|jsx)$/,
         use: 'babel-loader'
       },
       {
@@ -22,6 +33,12 @@ module.exports = {
         ]
       }
     ]
-  }
-
+  },
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: path.resolve(__dirname, 'client/index.html')
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ]
 };
