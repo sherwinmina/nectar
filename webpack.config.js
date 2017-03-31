@@ -7,7 +7,6 @@ module.exports = {
   entry: [
     'webpack-hot-middleware/client',
     path.join(__dirname, 'client')
-
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -22,6 +21,7 @@ module.exports = {
       },
       {
         test: /\.(js|jsx)$/,
+        exclude: path.resolve(__dirname, 'node_modules'),
         use: 'babel-loader'
       },
       {

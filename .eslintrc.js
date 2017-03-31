@@ -13,6 +13,7 @@ module.exports = {
       "no-unused-vars": "warn",
       "padded-blocks": "off",
       "eol-last": "off",
-      "key-spacing": ["error", {"beforeColon": false}]
+      "key-spacing": ["error", {"beforeColon": false}],
+      "space-before-function-paren": "off"
     }
 };
