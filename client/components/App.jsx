@@ -1,5 +1,5 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {gql, graphql} from 'react-apollo';
 
 class App extends React.Component {
   render() {
@@ -9,17 +9,4 @@ class App extends React.Component {
   }
 }
 
-export default Relay.createContainer(
-  App,
-  {
-    fragments: {
-      viewer: () => Relay.QL`
-        fragment on Posts {
-          id
-          title
-          content
-        }
-      `
-    }
-  }
-);
+export default App;

@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const graphqlHTTPconfig = require('./graphQL/graphqlHTTPconfig.js');
+const graphQLOptions = require('./graphQL/graphQLOptions.js');
+const {graphqlExpress} = require('graphql-server-express');
+const {graphiqlExpress} = require('graphql-server-express');
 const webpack = require('webpack');
 const webpackConfig = require('../webpack.config.js');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -28,7 +30,7 @@ const compilerCallback = (error, stats) => {
 };
 
 
-if (process.env.NODE !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   app.use(webpackDevMiddleware(compilerInstance, {
     publicPath: webpackConfig.output.publicPath,
     stats: {colors: true}
@@ -44,7 +46,11 @@ app.use('/', express.static(path.resolve(__dirname, '../dist')));
 
 app.use(bodyParser.json());
 
-app.use('/graphql', graphqlHTTPconfig);
+app.use('/graphql', graphqlExpress(graphQLOptions));
+
+app.use('/graphiql', graphiqlExpress({
+  endpointURL: '/graphql'
+}));
 
 
 
