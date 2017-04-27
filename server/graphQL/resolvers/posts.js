@@ -2,13 +2,19 @@ const db = require('../../../db/dbConnection.js');
 const sql = require('../../../db/sql/sql.js');
 
 const postsResolver = () => {
-  console.log(5);
-  return db.any(sql.posts.getAll)
-    .then(posts => posts.map((post) => {
+  return (async function() {
+    let posts;
+    try {
+      posts = await db.any(sql.posts.getAll);
+    } catch (error) {
+      posts = error;
+    }
+    const resolvedPosts = posts.map(post => {
       post.owner = post.username;
       return post;
-    }))
-    .catch(error => error);
+    });
+    return resolvedPosts;
+  })();
 };
 
 module.exports = postsResolver;

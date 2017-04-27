@@ -65,9 +65,9 @@ const CategoriesType = require('./categories.js');
 const QueryType = /* GraphQL */`
   type Query {
     user(username: String): User
-    products: Products
-    posts: Posts
-    categories: Categories
+    products: [Products]
+    posts: [Posts]
+    categories: [Categories]
   }
 `;
 
