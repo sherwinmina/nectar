@@ -4,6 +4,18 @@ const db = require('../../db/dbConnection.js');
 
 module.exports = {
 
+  // authenticateUser: (req, res) => {
+  //
+  //   db.one(sql.users.authenticate, {
+  //     username: req.body.credentials.username,
+  //     password: req.body.credentials.password
+  //   })
+  //   .then((user) => {
+  //     console.log(user);
+  //   })
+  //
+  // },
+
   addUser: (req, res) => {
 
     db.one(sql.users.add, {

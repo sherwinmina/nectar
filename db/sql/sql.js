@@ -12,6 +12,7 @@ module.exports = {
   },
   users: {
     create: sql('users/create.sql'),
+    authenticate: sql('users/authenticate.sql'),
     add: sql('users/add.sql'),
     get: sql('users/get.sql'),
     init: sql('users/init.sql')
