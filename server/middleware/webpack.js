@@ -10,6 +10,7 @@ const app = express();
 
 const compilerInstance = webpack(webpackConfig);
 
+
 const compilerCallback = (error, stats) => {
   if (error) {
     console.error(error.stack || error);

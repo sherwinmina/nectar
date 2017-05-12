@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 const TextInput = (props) => {
 
   return (
-    <input type={props.type} name={props.name}></input>
+    <input
+      className={props.className}
+      type={props.type}
+      name={props.name}
+      placeholder={props.name}
+    />
   );
 
 };

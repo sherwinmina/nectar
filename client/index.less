@@ -1,0 +1,52 @@
+body {
+  height: 100vh;
+}
+
+.app {
+  height: 100%;
+}
+
+.loginMain {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-content: space-between;
+}
+
+.authForm {
+  width: 40%;
+  height: 40%;
+  display: flex;
+  flex-flow: column;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.textInput {
+  height: 20%;
+  background-color: transparent;
+  border: none;
+  border-bottom: thin solid black;
+  font-size: medium;
+  &:focus {
+    outline: none;
+  }
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+  }
+}
+
+.loginButton {
+  height: 20%;
+  font-size: xx-large;
+  font-family: courier;
+  // border-radius: 5px;
+  background-color: fade(white, 20%);
+  
+
+}
+
+.logoEstablished, .logoName {
+  width: 40%;
+  margin: auto;
+}

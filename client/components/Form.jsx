@@ -11,20 +11,20 @@ const Form = (props) => {
       }}
       onSubmit={(event) => {
         event.preventDefault();
-
-        console.log(props.credentials);
         props.submitLoginInfo(props.credentials);
       }}
       >
-      <h1>hi</h1>
       <TextInput
+        className='textInput'
         type='text'
         name='username'
       />
       <TextInput
+        className='textInput'
         type='password'
         name='password'/>
       <Button
+        text='Login'
         className='loginButton'
       />
     </form>

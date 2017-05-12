@@ -14,7 +14,7 @@ const PostsType = /* GraphQL */`
   type Posts {
     id: String
     owner: String
-    titile: String
+    title: String
     content: String
   }
 `;

@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -16,6 +17,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: 'file-loader'
+      },
+      {
         test: /\.html$/,
         use: 'html-loader'
       },
@@ -26,15 +31,21 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: [
-          'style-loader',
-          {loader: 'css-loader', options: {importLoaders: 1}},
-          'less-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          use: [
+            'css-loader',
+            'less-loader'
+          ],
+          fallback: 'style-loader'
+        })
       }
     ]
   },
   plugins: [
+    new ExtractTextPlugin({
+      filename: 'index.css',
+      disable: process.env.NODE_ENV !== 'production'
+    }),
     new HTMLWebpackPlugin({
       template: path.resolve(__dirname, 'client/index.html')
     }),

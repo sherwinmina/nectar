@@ -28,6 +28,7 @@ const authenticateHandler = async (req, res) => {
           message: error.message
         }
       });
+      return;
     }
 
   }
@@ -39,7 +40,10 @@ const authenticateHandler = async (req, res) => {
     secret
   );
 
-  res.status(200).json(newJWT);
+  res.status(200).json({
+    user,
+    newJWT
+  });
 
 };
 

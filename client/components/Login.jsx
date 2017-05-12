@@ -16,7 +16,6 @@ class Login extends React.Component {
     this.receivingCredentials({
       [event.target.name]: event.target.value
     });
-    console.log(this.state);
   }
 
   receivingCredentials(credentials) {
@@ -40,17 +39,36 @@ class Login extends React.Component {
     } catch (error) {
       response = error;
     }
-    console.log(response, 5);
+
+    if (response instanceof Error) {
+      console.log({error: response});
+    } else {
+      console.log(response.data);
+      window.localStorage.setItem('jwt', response.data.newJWT);
+      // setState on app for user and will rerender
+      this.props.updateUserAuthorization(response.data.user, true);
+    }
+
   }
 
   render() {
     return (
       <div className='loginMain'>
+        <img
+          src={require('../media/SFHBlogoEstablishedBlack.png')}
+          alt='San Francisco HomeBrewers Guild logo est'
+          className='logoEstablished
+          '/>
         <Form
           updateCredentials={this.onChange}
           submitLoginInfo={this.submitLoginInfo}
           credentials={this.state.credentials}
           />
+        <img
+          src={require('../media/HomebrewersGuildNameLogo.png')}
+          alt='San Francisco Homebrewers Guild Logo name'
+          className='logoName'
+        />
       </div>
     );
   }

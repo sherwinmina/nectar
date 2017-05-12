@@ -1,5 +1,4 @@
 const expressJWT = require('express-jwt');
-const jwt = require('jsonwebtoken');
 const express = require('express');
 const app = express();
 const secret = require('../../jwtConfigVars.json').secret || process.env.JWT_SECRET;

@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const middleware = require('./middleware/');
+const middleware = require('./middleware/index.js');
 const router = require('./router.js');
 
 

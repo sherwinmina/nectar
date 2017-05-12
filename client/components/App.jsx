@@ -1,27 +1,34 @@
 import React from 'react';
 import { gql, graphql } from 'react-apollo';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Login from './Login.jsx';
 import Home from './Home.jsx';
+import axios from 'axios';
 
 
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      user: null,
-      authenticated: false
+      user: this.props.authorizedUser || null
     };
   }
+
   render() {
     return (
-      <Route path='/'
-      render={
-        () => {
-          return this.state.authenticated ? <Home/> : <Login/>;
-        }
-      }/>
+      <Switch>
+        <Route exact path='/'
+        render={
+          (props) => {
+            return this.state.user !== null /* false */ ? <Redirect to='/home'/> : <Redirect to='/login'/>;
+            // return this.state.user !== null ? <Home props={props} history={ props.history }/> : <Login updateUserAuthorization={this.updateUserAuthorization}/>;
+          }
+        }/>
+        <Route path='/login' component={Login}/>
+        <Route path='/home' component={Home} user={this.state.user}/>
+      </Switch>
+
     );
   }
 }
