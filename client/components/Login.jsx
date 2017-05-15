@@ -55,7 +55,7 @@ class Login extends React.Component {
     return (
       <div className='loginMain'>
         <img
-          src={require('../media/SFHBlogoEstablishedBlack.png')}
+          src={require('../media/SFHBLogo.svg')}
           alt='San Francisco HomeBrewers Guild logo est'
           className='logoEstablished
           '/>
@@ -64,11 +64,6 @@ class Login extends React.Component {
           submitLoginInfo={this.submitLoginInfo}
           credentials={this.state.credentials}
           />
-        <img
-          src={require('../media/HomebrewersGuildNameLogo.png')}
-          alt='San Francisco Homebrewers Guild Logo name'
-          className='logoName'
-        />
       </div>
     );
   }

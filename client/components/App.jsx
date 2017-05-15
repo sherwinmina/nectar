@@ -21,7 +21,7 @@ class App extends React.Component {
         <Route exact path='/'
         render={
           (props) => {
-            return this.state.user !== null /* false */ ? <Redirect to='/home'/> : <Redirect to='/login'/>;
+            return this.state.user !== null ? <Redirect to='/home'/> : <Redirect to='/login'/>;
             // return this.state.user !== null ? <Home props={props} history={ props.history }/> : <Login updateUserAuthorization={this.updateUserAuthorization}/>;
           }
         }/>

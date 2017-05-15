@@ -1,5 +1,10 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400';
+@font: 'Open Sans';
+
 body {
-  height: 100vh;
+  // height: 100vh;
+  font-family: @font;
+  margin: 0;
 }
 
 .app {
@@ -39,14 +44,81 @@ body {
 .loginButton {
   height: 20%;
   font-size: xx-large;
-  font-family: courier;
-  // border-radius: 5px;
-  background-color: fade(white, 20%);
-  
-
+  background-color: white;
 }
 
 .logoEstablished, .logoName {
   width: 40%;
   margin: auto;
+}
+
+.home {
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
+.homeMain {
+  height: 100%;
+  margin: auto;
+  display: flex;
+  // overflow: hidden;
+}
+
+.postsFeed {
+  height: 100%;
+  width: 70%;
+  overflow: scroll;
+  border: thin solid black;
+}
+
+.post {
+  border: thin solid black;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 1%;
+}
+
+.postHeader {
+  display: flex;
+  height: 70px;
+}
+
+.postSub-header {
+  margin-left: 1%;
+  display: flex;
+  align-items: baseline;
+}
+
+.postOwnerImg {
+  background-color: orange;
+  border: thin solid black;
+  width: 70px;
+}
+
+.postContent {
+  overflow: hidden;
+  transition: all 1s ease;
+  max-height: 0;
+  &.show {
+    max-height: 200px;
+  }
+}
+
+.productsAside {
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  border: thin solid black;
+  width: 30%;
+  overflow: scroll;
+}
+
+.productEntry {
+  border: thin solid black;
+  width: 40%;
+  height: 20%;
+  margin: 10px;
+  padding: 1%;
 }
